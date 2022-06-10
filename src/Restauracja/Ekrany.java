@@ -4,7 +4,7 @@ interface Ekrany{
     /**
      * Typy ekranow
      */
-    enum typEkranu {
+    static enum typEkranu {
         Kuchnia,
         Grill,
         Kurczak,
