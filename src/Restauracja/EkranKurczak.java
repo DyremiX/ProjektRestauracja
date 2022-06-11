@@ -1,10 +1,15 @@
 package Restauracja;
 
+import java.util.ArrayList;
+
 class EkranKurczak implements Ekrany{
     int miesaStrips;
     int miesaChick;
     int miesaNuggets;
-
+    
+    int iloscZamowien;
+    ArrayList<Zamowienie> zamowienia;
+    Boolean isActive;
     /**
      * Tworzy nowy ekran typu Grill w restauracji
      */
@@ -12,6 +17,9 @@ class EkranKurczak implements Ekrany{
         this.miesaStrips = 0;
         this.miesaChick = 0;
         this.miesaNuggets = 0;
+        this.zamowienia = new ArrayList<>();
+        this.isActive=true;
+        this.iloscZamowien=0;
     }
     /**
      * Przycisk Strips - kasuje z ekranu 8 mies Strips
@@ -83,4 +91,12 @@ class EkranKurczak implements Ekrany{
     public String wypiszZawartosc() {
         return "";
     }
+	/**
+     * Zwraca aktualna ilosc zamowien na ekranie
+     * @return int: ilosc zamowien na ekranie
+     */
+	@Override
+	public int ileZamowien() {
+		return iloscZamowien;
+	}
 }

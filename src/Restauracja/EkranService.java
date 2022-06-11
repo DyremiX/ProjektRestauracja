@@ -1,17 +1,23 @@
 package Restauracja;
 
+import java.util.ArrayList;
+
 class EkranService implements Ekrany{
-    //ArrayList<Zamowienie> zamowienia;
+    ArrayList<Zamowienie> zamowienia;
         /*Wskazuje jedno z 6 wyswitlanych na ekranie zamowien
         Po wcisinieciu Przycisko serve wskazywane przez nie zamowienie zostanie usuniete z ekranu*/
     int cursor;
     Zamowienie poprzednieZamowienie;
     int iloscZamowien;
+    Boolean isActive;
+    Boolean wyswietlOstatnie;
 
     EkranService(){
         this.cursor = 0;
         this.iloscZamowien = 0;
         this.poprzednieZamowienie = null;
+        this.zamowienia = new ArrayList<>();
+        this.isActive=true;
     }
 
     /**
@@ -19,7 +25,11 @@ class EkranService implements Ekrany{
      */
     @Override
     public void przycisk1() {
-
+    	if(iloscZamowien>0) {
+    	poprzednieZamowienie=zamowienia.get(cursor);
+    	zamowienia.remove(cursor);
+    	przycisk2();
+    	}
     }
 
     /**
@@ -27,7 +37,13 @@ class EkranService implements Ekrany{
      */
     @Override
     public void przycisk2() {
-
+    	if(iloscZamowien==0) {
+    		cursor=0;
+    	}
+    	else {
+    		cursor++;
+    		cursor%=zamowienia.size();
+    	}
     }
 
     /**
@@ -35,7 +51,7 @@ class EkranService implements Ekrany{
      */
     @Override
     public void przycisk3() {
-
+    	wyswietlOstatnie=!wyswietlOstatnie;
     }
 
     /**
@@ -62,7 +78,9 @@ class EkranService implements Ekrany{
      */
     @Override
     public void dodajZamowienie(Zamowienie _zamowienie) {
-
+    	if(iloscZamowien<=6) {
+    		zamowienia.add(_zamowienie);
+    	}
     }
 
     /**
@@ -71,6 +89,28 @@ class EkranService implements Ekrany{
      */
     @Override
     public String wypiszZawartosc() {
-        return null;
+    	if(wyswietlOstatnie) {
+    		return "Poprzednie Zamowienie: " +poprzednieZamowienie.toString();
+    	}
+    	else {
+    		String zamowieniaString="";
+        	for(Zamowienie z:zamowienia) {
+        		if(z==zamowienia.get(cursor))
+        			zamowieniaString+=">>";
+        		zamowieniaString+=z.toString();
+        		if(z==zamowienia.get(cursor))
+        			zamowieniaString+="<<";
+        		zamowieniaString+="\n";
+        	}
+        	return "Aktualne Zamowienia: "+zamowieniaString;
+        }
     }
+    /**
+     * Zwraca aktualna ilosc zamowien na ekranie
+     * @return int: ilosc zamowien na ekranie
+     */
+	@Override
+	public int ileZamowien() {
+		return iloscZamowien;
+	}
 }

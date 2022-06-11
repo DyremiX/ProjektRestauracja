@@ -19,6 +19,8 @@ interface Ekrany{
      * @return typEkranu
      */
     typEkranu typEkranu();
+    
+    int ileZamowien();
 
     /**
      * Zwraca informacje czy ekran jest aktynwy
