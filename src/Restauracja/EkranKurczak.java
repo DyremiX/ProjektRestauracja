@@ -17,7 +17,6 @@ class EkranKurczak implements Ekrany{
         this.miesaStrips = 0;
         this.miesaChick = 0;
         this.miesaNuggets = 0;
-        this.zamowienia = new ArrayList<>();
         this.isActive=true;
         this.iloscZamowien=0;
     }
@@ -70,7 +69,7 @@ class EkranKurczak implements Ekrany{
      */
     @Override
     public boolean czyAktywny(){
-        return true;
+        return isActive;
     }
 
     /**
@@ -79,7 +78,7 @@ class EkranKurczak implements Ekrany{
      */
     @Override
     public void dodajZamowienie(Zamowienie _zamowienie) {
-
+    	
     }
 
     /**
