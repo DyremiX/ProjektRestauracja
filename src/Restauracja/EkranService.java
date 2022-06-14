@@ -1,5 +1,7 @@
 package Restauracja;
 
+import java.util.ArrayList;
+
 class EkranService implements Ekrany{
     //ArrayList<Zamowienie> zamowienia;
         /*Wskazuje jedno z 6 wyswitlanych na ekranie zamowien
@@ -7,11 +9,15 @@ class EkranService implements Ekrany{
     int cursor;
     Zamowienie poprzednieZamowienie;
     int iloscZamowien;
+    ArrayList<Zamowienie> zamowieniaNaEkranie;
+    boolean czyPrzywolano;
 
     EkranService(){
+        this.zamowieniaNaEkranie = new ArrayList<Zamowienie>();
         this.cursor = 0;
         this.iloscZamowien = 0;
         this.poprzednieZamowienie = null;
+        this.czyPrzywolano = false;
     }
 
     /**
@@ -19,7 +25,7 @@ class EkranService implements Ekrany{
      */
     @Override
     public void przycisk1() {
-
+        zamowieniaNaEkranie.remove(this.cursor);
     }
 
     /**
@@ -27,7 +33,10 @@ class EkranService implements Ekrany{
      */
     @Override
     public void przycisk2() {
-
+        this.cursor++;
+        if(this.cursor == this.iloscZamowien || this.cursor > 5){
+            this.cursor = 0;
+        }
     }
 
     /**
@@ -71,6 +80,19 @@ class EkranService implements Ekrany{
      */
     @Override
     public String wypiszZawartosc() {
-        return null;
+        String zawartosc = "";
+        for(int i = 0; i < zamowieniaNaEkranie.size(); i++){
+            if(i == 6)
+                break;
+            if(i == this.cursor)
+                zawartosc += "*";
+            zawartosc += zamowieniaNaEkranie.get(i).wyswietl() + "\n";
+        }
+
+        if(czyPrzywolano){
+            zawartosc += poprzednieZamowienie.wyswietl();
+        }
+
+
+        return zawartosc;
     }
-}
