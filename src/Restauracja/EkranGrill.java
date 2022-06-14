@@ -72,7 +72,6 @@ class EkranGrill implements Ekrany{
      */
     @Override
     public void dodajZamowienie(Zamowienie _zamowienie) {
-
     }
 
     /**
@@ -81,8 +80,9 @@ class EkranGrill implements Ekrany{
      */
     @Override
     public String wypiszZawartosc() {
-        return "";
+        return String.format("Mieso 10:1 - %d\nMieso 4:1 - %d\nMieso Thicker - %d", this.miesa10_1, this.miesa4_1, this.miesaThicker);
     }
+<<<<<<< HEAD
 
 	@Override
 	public int ileZamowien() {
@@ -90,3 +90,6 @@ class EkranGrill implements Ekrany{
 		return 0;
 	}
 }
+=======
+}
+>>>>>>> refs/remotes/origin/master
