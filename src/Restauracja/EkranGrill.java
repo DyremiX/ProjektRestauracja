@@ -83,4 +83,10 @@ class EkranGrill implements Ekrany{
     public String wypiszZawartosc() {
         return "";
     }
+
+	@Override
+	public int ileZamowien() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

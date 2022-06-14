@@ -9,8 +9,8 @@ class EkranService implements Ekrany{
     int cursor;
     Zamowienie poprzednieZamowienie;
     int iloscZamowien;
-    Boolean isActive;
-    Boolean wyswietlOstatnie;
+    boolean isActive;
+    boolean wyswietlOstatnie;
 
     EkranService(){
         this.cursor = 0;
@@ -42,7 +42,7 @@ class EkranService implements Ekrany{
     	}
     	else {
     		cursor++;
-    		cursor%=zamowienia.size();
+    		cursor%=6;
     	}
     }
 
@@ -78,9 +78,8 @@ class EkranService implements Ekrany{
      */
     @Override
     public void dodajZamowienie(Zamowienie _zamowienie) {
-    	if(iloscZamowien<=6) {
-    		zamowienia.add(_zamowienie);
-    	}
+    	zamowienia.add(_zamowienie);
+    	iloscZamowien++;
     }
 
     /**
@@ -94,11 +93,12 @@ class EkranService implements Ekrany{
     	}
     	else {
     		String zamowieniaString="";
-        	for(Zamowienie z:zamowienia) {
-        		if(z==zamowienia.get(cursor))
+        	for(int i=0;i<6;i++) {
+        		Zamowienie z=zamowienia.get(i);
+        		if(i==cursor)
         			zamowieniaString+=">>";
         		zamowieniaString+=z.toString();
-        		if(z==zamowienia.get(cursor))
+        		if(i==cursor)
         			zamowieniaString+="<<";
         		zamowieniaString+="\n";
         	}

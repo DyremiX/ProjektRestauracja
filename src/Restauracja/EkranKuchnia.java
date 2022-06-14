@@ -1,16 +1,24 @@
 package Restauracja;
 
+import java.util.ArrayList;
+
 class EkranKuchnia implements Ekrany{
-    //ArrayList<Zamowienie> zamowienia;
+    ArrayList<Zamowienie> zamowienia;
     boolean czyAktywny;
+    Zamowienie poprzednieZamowienie;
+    int iloscZamowien;
+    boolean wyswietlOstatnie;
 
 
     /**
      * Tworzy nowy ekran typu Kuchnia w restauracji
      */
     EkranKuchnia(){
-        //this.zamowienia = new ArrayList<Zamowienie>();
+        this.zamowienia = new ArrayList<Zamowienie>();
         this.czyAktywny = false;
+        this.iloscZamowien=0;
+        this.wyswietlOstatnie=false;
+        this.poprzednieZamowienie=null;
     }
 
     /**
@@ -18,7 +26,11 @@ class EkranKuchnia implements Ekrany{
      */
     @Override
     public void przycisk1() {
-
+    	if(iloscZamowien>0) {
+    		iloscZamowien--;
+    		poprzednieZamowienie=zamowienia.get(0);
+    		zamowienia.remove(0);
+    	}
     }
 
     /**
@@ -26,7 +38,7 @@ class EkranKuchnia implements Ekrany{
      */
     @Override
     public void przycisk2() {
-
+    	wyswietlOstatnie=!wyswietlOstatnie;
     }
 
     /**
@@ -61,7 +73,8 @@ class EkranKuchnia implements Ekrany{
      */
     @Override
     public void dodajZamowienie(Zamowienie _zamowienie) {
-
+    	zamowienia.add(_zamowienie);
+    	iloscZamowien++;
     }
 
     /**
@@ -70,6 +83,22 @@ class EkranKuchnia implements Ekrany{
      */
     @Override
     public String wypiszZawartosc() {
-        return  "";
+    	if(wyswietlOstatnie) {
+    		return "Poprzednie Zamowienie: " +poprzednieZamowienie.toString();
+    	}
+    	else {
+    		String zamowieniaString="";
+        	for(int i=0;i<6;i++) {
+        		Zamowienie z=zamowienia.get(i);
+        		zamowieniaString+=z.toString();
+        		zamowieniaString+="\n";
+        	}
+        	return "Aktualne Zamowienia:\n "+zamowieniaString;
+        }
     }
+
+	@Override
+	public int ileZamowien() {
+		return iloscZamowien;
+	}
 }

@@ -9,7 +9,7 @@ class EkranKurczak implements Ekrany{
     
     int iloscZamowien;
     ArrayList<Zamowienie> zamowienia;
-    Boolean isActive;
+    boolean isActive;
     /**
      * Tworzy nowy ekran typu Grill w restauracji
      */
