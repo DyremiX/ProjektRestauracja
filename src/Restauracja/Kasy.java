@@ -9,13 +9,9 @@ interface Kasy{
      * Funckja dodajaca do aktualnie otwartego zamowienia produkt
      * @param idProduktu idProduktu dodawanego do zamowienia
      */
-    void dodajProdukt(int idProduktu);
+    void dodajProdukt(ProduktMieso x, ProduktKurczak y);
     /**
      * Fukcja zamykajaca zamowienie
      */
     void zamknijZamowienie();
-    /**
-     * Funkcja zmieniajaca status zamowienia na oplacone
-     */
-    void oplacZamowienie();
 }
