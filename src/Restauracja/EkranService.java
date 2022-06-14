@@ -9,25 +9,25 @@ class EkranService implements Ekrany{
     int cursor;
     Zamowienie poprzednieZamowienie;
     int iloscZamowien;
-<<<<<<< HEAD
+
     boolean isActive;
     boolean wyswietlOstatnie;
-=======
+
     ArrayList<Zamowienie> zamowieniaNaEkranie;
     boolean czyPrzywolano;
->>>>>>> refs/remotes/origin/master
+
 
     EkranService(){
         this.zamowieniaNaEkranie = new ArrayList<Zamowienie>();
         this.cursor = 0;
         this.iloscZamowien = 0;
         this.poprzednieZamowienie = null;
-<<<<<<< HEAD
+
         this.zamowienia = new ArrayList<>();
         this.isActive=true;
-=======
+
         this.czyPrzywolano = false;
->>>>>>> refs/remotes/origin/master
+
     }
 
     /**
@@ -35,15 +35,15 @@ class EkranService implements Ekrany{
      */
     @Override
     public void przycisk1() {
-<<<<<<< HEAD
+
     	if(iloscZamowien>0) {
     	poprzednieZamowienie=zamowienia.get(cursor);
     	zamowienia.remove(cursor);
     	przycisk2();
     	}
-=======
+
         zamowieniaNaEkranie.remove(this.cursor);
->>>>>>> refs/remotes/origin/master
+
     }
 
     /**
@@ -51,7 +51,7 @@ class EkranService implements Ekrany{
      */
     @Override
     public void przycisk2() {
-<<<<<<< HEAD
+
     	if(iloscZamowien==0) {
     		cursor=0;
     	}
@@ -59,12 +59,12 @@ class EkranService implements Ekrany{
     		cursor++;
     		cursor%=6;
     	}
-=======
+
         this.cursor++;
         if(this.cursor == this.iloscZamowien || this.cursor > 5){
             this.cursor = 0;
         }
->>>>>>> refs/remotes/origin/master
+
     }
 
     /**
@@ -109,7 +109,7 @@ class EkranService implements Ekrany{
      */
     @Override
     public String wypiszZawartosc() {
-<<<<<<< HEAD
+
     	if(wyswietlOstatnie) {
     		return "Poprzednie Zamowienie: " +poprzednieZamowienie.toString();
     	}
@@ -136,21 +136,3 @@ class EkranService implements Ekrany{
 		return iloscZamowien;
 	}
 }
-=======
-        String zawartosc = "";
-        for(int i = 0; i < zamowieniaNaEkranie.size(); i++){
-            if(i == 6)
-                break;
-            if(i == this.cursor)
-                zawartosc += "*";
-            zawartosc += zamowieniaNaEkranie.get(i).wyswietl() + "\n";
-        }
-
-        if(czyPrzywolano){
-            zawartosc += poprzednieZamowienie.wyswietl();
-        }
-
-
-        return zawartosc;
-    }
->>>>>>> refs/remotes/origin/master
