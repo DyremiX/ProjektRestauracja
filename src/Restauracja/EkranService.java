@@ -96,4 +96,3 @@ class EkranService implements Ekrany{
 
         return zawartosc;
     }
-}

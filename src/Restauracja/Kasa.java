@@ -1,13 +1,13 @@
 package Restauracja;
 
-class Kasa implements Kasy{
+class Kasa_Fiskalna implements Kasy{
     int nrKasy;
     int zalogowanyPracownik;
     Zamowienie obslugiwane_zamowienie;
     //Sterownik_ekranow sterownik;
 
     
-    Kasa (int nrKasy){//Sterownik_ekranow sterownik){
+    Kasa_Fiskalna (int nrKasy){//Sterownik_ekranow sterownik){
         this.nrKasy = nrKasy;
         //this.sterownik = sterownik;
     }
@@ -28,8 +28,8 @@ class Kasa implements Kasy{
      * @param idProduktu idProduktu dodawanego do zamowienia
      */
     @Override
-    public void dodajProdukt(int idProduktu) {
-        //obslugiwane_zamowienie.dodajZamowienie(idProduktu);
+    public void dodajProdukt(ProduktMieso x, ProduktKurczak y) {
+        obslugiwane_zamowienie.dodaj_produkt(x,y);
     }
 
     /**
@@ -44,7 +44,6 @@ class Kasa implements Kasy{
     /**
      * Funkcja zmieniajaca status zamowienia na oplacone
      */
-    @Override
     public void oplacZamowienie() {
 
     }
