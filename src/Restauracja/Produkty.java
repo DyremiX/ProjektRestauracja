@@ -17,4 +17,7 @@ interface Produkty {
     public static Produkty getProductFromID(int ID) {
     	return IDProduktow.get(ID);
     }
+    int getMieso1();
+    int getMieso2();
+    int getMieso3();
 }

@@ -30,4 +30,19 @@ class ProduktMieso implements Produkty{
     public rodzajMiesa rodzajMiesa() {
     	return rodzajMiesa.Mieso;
     }
+
+	@Override
+	public int getMieso1() {
+		return mieso101;
+	}
+
+	@Override
+	public int getMieso2() {
+		return mieso41;
+	}
+
+	@Override
+	public int getMieso3() {
+		return miesoThicker;
+	}
 }

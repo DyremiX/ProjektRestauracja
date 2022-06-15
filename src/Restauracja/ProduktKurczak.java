@@ -33,4 +33,18 @@ class ProduktKurczak implements Produkty{
     public rodzajMiesa rodzajMiesa() {
     	return rodzajMiesa.Kurczak;
     }
+    @Override
+	public int getMieso1() {
+		return kurczakStrips;
+	}
+
+	@Override
+	public int getMieso2() {
+		return kurczakChick;
+	}
+
+	@Override
+	public int getMieso3() {
+		return kurczakNuggets;
+	}
 }

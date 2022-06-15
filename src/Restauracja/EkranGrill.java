@@ -1,5 +1,7 @@
 package Restauracja;
 
+import java.util.HashMap;
+
 class EkranGrill implements Ekrany{
     int miesa10_1;
     int miesa4_1;
@@ -72,6 +74,14 @@ class EkranGrill implements Ekrany{
      */
     @Override
     public void dodajZamowienie(Zamowienie _zamowienie) {
+    	HashMap<Produkty,Integer> lista=_zamowienie.getListaProduktowIIlosci();
+    	for(Produkty p:lista.keySet()) {
+    		if(p.rodzajMiesa()==Produkty.rodzajMiesa.Mieso) {
+    			miesa10_1+=p.getMieso1()*lista.get(p);
+    			miesa4_1+=p.getMieso2()*lista.get(p);
+    			miesaThicker+=p.getMieso3()*lista.get(p);
+    		}
+    	}
     }
 
     /**

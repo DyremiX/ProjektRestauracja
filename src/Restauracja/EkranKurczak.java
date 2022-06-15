@@ -1,6 +1,7 @@
 package Restauracja;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -80,7 +81,14 @@ class EkranKurczak implements Ekrany{
      */
     @Override
     public void dodajZamowienie(Zamowienie _zamowienie) {//HELP
-    	_zamowienie.getListaProduktowIIlosci();
+    	HashMap<Produkty,Integer> lista=_zamowienie.getListaProduktowIIlosci();
+    	for(Produkty p:lista.keySet()) {
+    		if(p.rodzajMiesa()==Produkty.rodzajMiesa.Kurczak) {
+    			miesaStrips+=p.getMieso1()*lista.get(p);
+    			miesaChick+=p.getMieso2()*lista.get(p);
+    			miesaNuggets+=p.getMieso3()*lista.get(p);
+    		}
+    	}
     }
 
     /**
