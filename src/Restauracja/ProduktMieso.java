@@ -1,11 +1,11 @@
 package Restauracja;
 
 class ProduktMieso implements Produkty{
-    String nazwaProduktu;
-    double cenaProduktu;
-    int mieso101;
-    int mieso41;
-    int miesoThicker;
+    final String nazwaProduktu;
+    final double cenaProduktu;
+    final int mieso101;
+    final int mieso41;
+    final int miesoThicker;
 
     /**
      * Tworzy nowy produkt z miesem
@@ -26,5 +26,8 @@ class ProduktMieso implements Produkty{
     @Override
     public void wydruk() {
 
+    }
+    public rodzajMiesa rodzajMiesa() {
+    	return rodzajMiesa.Mieso;
     }
 }

@@ -56,6 +56,7 @@ public class Restauracja {
             System.out.println("\\\\\\Ekran service\\\\\\");
             System.out.println("\n\n\n\n");
         }
+        scanner.close();
     }
 
     void aktywuj(){
@@ -75,6 +76,7 @@ public class Restauracja {
                 }
             }
         }
+        //scanner.close();
     }
 
 

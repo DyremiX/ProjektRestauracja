@@ -1,11 +1,14 @@
 package Restauracja;
 
+import Restauracja.Produkty.rodzajMiesa;
+
 class ProduktKurczak implements Produkty{
-    String nazwaProduktu;
-    double cenaProduktu;
-    int kurczakStrips;
-    int kurczakChick;
-    int kurczakNuggets;
+    final String nazwaProduktu;
+    final double cenaProduktu;
+    final int kurczakStrips;
+    final int kurczakChick;
+    final int kurczakNuggets;
+    
 
     /**
      * Tworzy nowy produkt
@@ -26,5 +29,8 @@ class ProduktKurczak implements Produkty{
     @Override
     public void wydruk() {
 
+    }
+    public rodzajMiesa rodzajMiesa() {
+    	return rodzajMiesa.Kurczak;
     }
 }

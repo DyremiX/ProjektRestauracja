@@ -1,9 +1,9 @@
 package Restauracja;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.HashMap;
 
-import Utils.Pair;
+//import Utils.Pair;
 
 public class Zamowienie {
     double cena;
@@ -14,9 +14,12 @@ public class Zamowienie {
         listaProduktow = new  HashMap<Integer, Integer>();
     }
 
+    void dodajProdukt(int idProduktu,int ilosc){
+        int aktualnaIlosc = getListaProduktow().get(idProduktu);
+        getListaProduktow().put(idProduktu, aktualnaIlosc+ilosc);
+    }
     void dodajProdukt(int idProduktu){
-        int aktualnaIlosc = listaProduktow.get(idProduktu);
-        listaProduktow.put(idProduktu, ++aktualnaIlosc);
+    	dodajProdukt(idProduktu,1);
     }
 
     public String wyswietl(){
@@ -28,7 +31,11 @@ public class Zamowienie {
         return "Zamowienie{" +
                 "cena=" + cena +
                 ", czyOplacone=" + czyOplacone +
-                ", listaProduktow=" + listaProduktow +
+                ", listaProduktow=" + getListaProduktow() +
                 '}';
     }
+
+	HashMap<Integer, Integer> getListaProduktow() {
+		return listaProduktow;
+	}
 }

@@ -78,7 +78,7 @@ class EkranKurczak implements Ekrany{
      */
     @Override
     public void dodajZamowienie(Zamowienie _zamowienie) {
-    	
+    	_zamowienie.getListaProduktow();
     }
 
     /**
@@ -88,7 +88,7 @@ class EkranKurczak implements Ekrany{
      */
     @Override
     public String wypiszZawartosc() {
-        return "";
+    	return String.format("Mieso Chick - %d\nMieso Strips - %d\nMieso Nuggets - %d", this.miesaChick, this.miesaStrips, this.miesaNuggets);
     }
 	/**
      * Zwraca aktualna ilosc zamowien na ekranie

@@ -111,7 +111,7 @@ class EkranService implements Ekrany{
     public String wypiszZawartosc() {
 
     	if(wyswietlOstatnie) {
-    		return "Poprzednie Zamowienie: " +poprzednieZamowienie.toString();
+    		return "Poprzednie Zamowienie: " +poprzednieZamowienie.wyswietl();
     	}
     	else {
     		String zamowieniaString="";
