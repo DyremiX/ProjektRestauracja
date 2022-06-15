@@ -9,7 +9,7 @@ interface Kasy{
      * Funckja dodajaca do aktualnie otwartego zamowienia produkt
      * @param idProduktu idProduktu dodawanego do zamowienia
      */
-    void dodajProdukt(ProduktMieso x, ProduktKurczak y);
+    void dodajProdukt(int x, int y);
     /**
      * Fukcja zamykajaca zamowienie
      */
