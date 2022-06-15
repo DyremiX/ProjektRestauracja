@@ -16,52 +16,47 @@ public class Kiosk implements Kasy {
 	public void rozpocznijZamowienie() {
 		Scanner x = new Scanner(System.in);
 		obslugiwane_zamowienie = new Zamowienie();
-		System.out.println("Witamy w McDonald's, prosimy podaæ zamówienie, wpisuj¹c odpowienie nr");
-		System.out.println("w menu (na klawiaturze) i klikaj¹c enter.");
-		System.out.println("1. Big mac - 5,45 z³");
-		System.out.println("2. 6 nuggetsów - 5,50 z³");
-		System.out.println("3. 12 nuggetsów i 12 stripsów - 35,89 z³");
-		while (true) {
-			switch(x.nextInt()){
-			case 1:
-				dodajProdukt(new ProduktMieso(null, 13.0, 2, 0, 0), null);
-				System.out.print("Dodano Bigmac do zamówienia. Aby opuœciæ menu wpisz 10.");
-				break;
-			case 2:
-				dodajProdukt(null, new ProduktKurczak("6Nuggetsów", 12.0, 0, 0, 6));
-				System.out.print("Dodano 6 nuggetsów do zamówienia. Aby opuœciæ menu wpisz 10.");
-				break;
-			case 3:
-				dodajProdukt(null, new ProduktKurczak("12Nuggetsów", 24.0, 0, 0, 12));
-				System.out.print("Dodano 12 nuggetsów do zamówienia. Aby opuœciæ menu wpisz 10.");
-				break;
-			case 10:
-				System.out.print("Podsumowanie zamówienia: ");
-				for(ProduktKurczak s : obslugiwane_zamowienie.produkty_kurczak) {
-					System.out.println(s.nazwaProduktu);
-				}
-				System.out.println("Koszt zamówienia wynosi: " + obslugiwane_zamowienie.Wartosc_zamowienia);
+		wyswietl_menu();
+		System.out.println("ProszÄ™ wpisaÄ‡ odpowiednie id produktu a nastÄ™pnie iloÅ›Ä‡ ([id] [iloÅ›Ä‡]).");
+		int id,ilosc;
+		while(true) {
+			id = x.nextInt();
+			if(id == 99999) break;
+			ilosc = x.nextInt();
+			dodajProdukt(x.nextInt(), x.nextInt());
+			System.out.printf("Dodano %d %s do twojego zamÃ³wienia \n",ilosc,Produkty.IDProduktow.get(id));
+			System.out.printf("Aby opuÅ›ciÄ‡ stan wprowadzania produktÃ³w prosze wpisaÄ‡ 99999.");
+		}
+				System.out.println("Koszt zamÃ³wienia wynosi: " + obslugiwane_zamowienie.cena);
 				x.close();
 				return;
-			}
+			
+	}
+	
+	public void wyswietl_menu() {
+		for(Produkty x :  Produkty.IDProduktow.values()) {
+			x.wydruk();
 		}
 	}
 
 	@Override
-    public void dodajProdukt(ProduktMieso x, ProduktKurczak y) {
-        obslugiwane_zamowienie.dodaj_produkt(x,y);
+    public void dodajProdukt(int x, int y) {
+        obslugiwane_zamowienie.dodajProdukt(x, y);
     }
 
 	@Override
 	public void zamknijZamowienie() {
-		// TODO Auto-generated method stub	
+		System.out.print("DziÄ™kujemy za Zakupy");
 	}
 
 	public Boolean oplacZamowienie(Karta card) {
-		if(card.Withdraw(obslugiwane_zamowienie.getWartosc_zamowienia())) {
+		System.out.print(obslugiwane_zamowienie);
+		if(card.Withdraw(obslugiwane_zamowienie.cena)) {
+			obslugiwane_zamowienie.czyOplacone = true;
 			zamknijZamowienie();
 			return true;
 		}else {
+			System.out.println("ODMOWA.");
 			return false;
 		}
 		
