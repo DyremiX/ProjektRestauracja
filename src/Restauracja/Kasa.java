@@ -1,65 +1,49 @@
 package Restauracja;
-import java.util.Scanner;
-import  cash.Karta;
 
-
-public class Kiosk implements Kasy {
-	int ID_Kiosku;
+class Kasa_Fiskalna implements Kasy{
+    int nrKasy;
+    int zalogowanyPracownik;
     Zamowienie obslugiwane_zamowienie;
+    //Sterownik_ekranow sterownik;
+
     
-    public Kiosk(int iD_Kiosku) {
-		super();
-		ID_Kiosku = iD_Kiosku;
-	}
-
-	@Override
-	public void rozpocznijZamowienie() {
-		Scanner x = new Scanner(System.in);
-		obslugiwane_zamowienie = new Zamowienie();
-		wyswietl_menu();
-		System.out.println("Proszę wpisać odpowiednie id produktu a następnie ilość ([id] [ilość]).");
-		int id,ilosc;
-		while(true) {
-			id = x.nextInt();
-			if(id == 99999) break;
-			ilosc = x.nextInt();
-			dodajProdukt(x.nextInt(), x.nextInt());
-			System.out.printf("Dodano %d %s do twojego zamówienia \n",ilosc,Produkty.IDProduktow.get(id));
-			System.out.printf("Aby opuścić stan wprowadzania produktów prosze wpisać 99999.");
-		}
-				System.out.println("Koszt zamówienia wynosi: " + obslugiwane_zamowienie.cena);
-				x.close();
-				return;
-			
-	}
-	
-	public void wyswietl_menu() {
-		for(Produkty x :  Produkty.IDProduktow.values()) {
-			x.wydruk();
-		}
-	}
-
-	@Override
-    public void dodajProdukt(int x, int y) {
-        obslugiwane_zamowienie.dodajProdukt(x, y);
+    Kasa_Fiskalna (int nrKasy){//Sterownik_ekranow sterownik){
+        this.nrKasy = nrKasy;
+        //this.sterownik = sterownik;
+    }
+    
+    void zalogujPracownika (int zalogowanyPracownik){
+        if(obslugiwane_zamowienie == null) this.zalogowanyPracownik = zalogowanyPracownik;
+    }
+    /**
+     * Funkcja rozpoaczynajaca tworzenie nowego zamowienia
+     */
+    @Override
+    public void rozpocznijZamowienie() {
+        obslugiwane_zamowienie = new Zamowienie();
     }
 
-	@Override
-	public void zamknijZamowienie() {
-		System.out.print("Dziękujemy za Zakupy");
-	}
+    /**
+     * Funckja dodajaca do aktualnie otwartego zamowienia produkt
+     * @param idProduktu idProduktu dodawanego do zamowienia
+     */
+    @Override
+    public void dodajProdukt(int x, int y) {
+        obslugiwane_zamowienie.dodajProdukt(x,y);
+    }
 
-	public Boolean oplacZamowienie(Karta card) {
-		System.out.print(obslugiwane_zamowienie);
-		if(card.Withdraw(obslugiwane_zamowienie.cena)) {
-			obslugiwane_zamowienie.czyOplacone = true;
-			zamknijZamowienie();
-			return true;
-		}else {
-			System.out.println("ODMOWA.");
-			return false;
-		}
-		
-	}
-	
+    /**
+     * Fukcja zamykajaca zamowienie
+     */
+    @Override
+    public void zamknijZamowienie() {
+        obslugiwane_zamowienie = null;
+    }
+
+    /**
+     * Funkcja zmieniajaca status zamowienia na oplacone
+     */
+    public void oplacZamowienie() {
+    	
+    }
 }
