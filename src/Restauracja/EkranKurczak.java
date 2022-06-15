@@ -1,6 +1,8 @@
 package Restauracja;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
 
 class EkranKurczak implements Ekrany{
     int miesaStrips;
@@ -77,8 +79,8 @@ class EkranKurczak implements Ekrany{
      * @param _zamowienie Obiekt zamowienie
      */
     @Override
-    public void dodajZamowienie(Zamowienie _zamowienie) {
-    	_zamowienie.getListaProduktow();
+    public void dodajZamowienie(Zamowienie _zamowienie) {//HELP
+    	_zamowienie.getListaProduktowIIlosci();
     }
 
     /**

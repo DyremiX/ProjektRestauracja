@@ -15,8 +15,8 @@ public class Zamowienie {
     }
 
     void dodajProdukt(int idProduktu,int ilosc){
-        int aktualnaIlosc = getListaProduktow().get(idProduktu);
-        getListaProduktow().put(idProduktu, aktualnaIlosc+ilosc);
+        int aktualnaIlosc = listaProduktow.get(idProduktu);
+        listaProduktow.put(idProduktu, aktualnaIlosc+ilosc);
     }
     void dodajProdukt(int idProduktu){
     	dodajProdukt(idProduktu,1);
@@ -31,11 +31,18 @@ public class Zamowienie {
         return "Zamowienie{" +
                 "cena=" + cena +
                 ", czyOplacone=" + czyOplacone +
-                ", listaProduktow=" + getListaProduktow() +
+                ", listaProduktow=" + listaProduktow +
                 '}';
     }
-
-	HashMap<Integer, Integer> getListaProduktow() {
-		return listaProduktow;
+    /**
+     * Zwraca
+     * @return lista obiektów Produkt i ich liczba
+     */
+	public HashMap<Produkty, Integer> getListaProduktowIIlosci() {
+		HashMap<Produkty,Integer> lista=new HashMap<>();
+		for (int ID : listaProduktow.keySet()) {
+			lista.put(Produkty.getProductFromID(ID), listaProduktow.get(ID));
+		}
+		return lista;
 	}
 }
