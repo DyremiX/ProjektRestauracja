@@ -2,7 +2,7 @@ package Restauracja;
 
 //import Restauracja.Produkty.rodzajMiesa;
 
-class ProduktKurczak implements Produkty{
+class ProduktKurczak implements Produkt{
     final String nazwaProduktu;
     final double cenaProduktu;
     int idProduktu;

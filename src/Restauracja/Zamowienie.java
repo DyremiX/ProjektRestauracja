@@ -8,13 +8,13 @@ import java.util.HashMap;
 public class Zamowienie {
     double cena;
     boolean czyOplacone;
-    HashMap<Produkty, Integer> listaProduktow;
+    HashMap<Produkt, Integer> listaProduktow;
 
     /**
      * Konstruktor tworzacy obiekt zamowienie
      */
     Zamowienie(){
-        listaProduktow = new  HashMap<Produkty, Integer>();
+        listaProduktow = new  HashMap<Produkt, Integer>();
     }
 
     /**
@@ -23,7 +23,7 @@ public class Zamowienie {
      * @param ilosc ilosc produktu dodawanego do zamowienia
      */
     void dodajProdukt(int idProduktu,int ilosc){
-    	Produkty p = Produkty.getProductFromID(idProduktu);
+    	Produkt p = Produkt.getProductFromID(idProduktu);
         int aktualnaIlosc = listaProduktow.get(p);
         listaProduktow.put(p, aktualnaIlosc+ilosc);
         cena+=p.getCenaProduktu()*ilosc;
@@ -43,7 +43,7 @@ public class Zamowienie {
      */
     public String wyswietl(){
     	String lista="";
-    	for(Produkty p:listaProduktow.keySet()) {
+    	for(Produkt p:listaProduktow.keySet()) {
     		lista+="\n Iloœæ: "+listaProduktow.get(p)+", "+p.wydruk();
     	}
     	return "Stan zamowienia: " +
@@ -71,7 +71,7 @@ public class Zamowienie {
      * Zwraca
      * @return lista obiektÃ³w Produkt i ich liczba
      */
-	public HashMap<Produkty, Integer> getListaProduktowIIlosci() {
+	public HashMap<Produkt, Integer> getListaProduktowIIlosci() {
 		return this.listaProduktow;
 	}
 }

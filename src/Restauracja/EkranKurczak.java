@@ -81,9 +81,9 @@ class EkranKurczak implements Ekrany{
      */
     @Override
     public void dodajZamowienie(Zamowienie _zamowienie) {//HELP
-    	HashMap<Produkty,Integer> lista=_zamowienie.getListaProduktowIIlosci();
-    	for(Produkty p:lista.keySet()) {
-    		if(p.rodzajMiesa()==Produkty.rodzajMiesa.Kurczak) {
+    	HashMap<Produkt,Integer> lista=_zamowienie.getListaProduktowIIlosci();
+    	for(Produkt p:lista.keySet()) {
+    		if(p.rodzajMiesa()==Produkt.rodzajMiesa.Kurczak) {
     			miesaStrips+=p.getMieso1()*lista.get(p);
     			miesaChick+=p.getMieso2()*lista.get(p);
     			miesaNuggets+=p.getMieso3()*lista.get(p);

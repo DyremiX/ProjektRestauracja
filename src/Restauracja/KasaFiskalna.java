@@ -45,7 +45,7 @@ class KasaFiskalna implements Kasy{
      * Funkcja zmieniajaca status zamowienia na oplacone
      */
     public void oplacZamowienie() {
-
+    	obslugiwane_zamowienie.oplacZamowienie();
     }
 
     /**
@@ -53,7 +53,12 @@ class KasaFiskalna implements Kasy{
      * @return string zawierajacy pelna liste produktow i ich ceny
      */
     public String wyswietlProdukty(){
-        return "";
+    	String lista="";
+    	for(int ID : Produkt.IDProduktow.keySet()) {
+    		Produkt p=Produkt.getProductFromID(ID);
+    		lista+="\n "+p.wydruk();
+    	}
+    	return "Wszystkie produkty: "+lista;
     }
 
     /**

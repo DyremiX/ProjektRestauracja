@@ -1,6 +1,6 @@
 package Restauracja;
 
-class ProduktMieso implements Produkty{
+class ProduktMieso implements Produkt{
     final String nazwaProduktu;
     final double cenaProduktu;
     final int idProduktu;

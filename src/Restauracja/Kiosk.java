@@ -24,7 +24,7 @@ public class Kiosk implements Kasy {
 			if(id == 99999) break;
 			ilosc = x.nextInt();
 			dodajProdukt(x.nextInt(), x.nextInt());
-			System.out.printf("Dodano %d %s do twojego zamówienia \n",ilosc,Produkty.IDProduktow.get(id));
+			System.out.printf("Dodano %d %s do twojego zamówienia \n",ilosc,Produkt.IDProduktow.get(id));
 			System.out.printf("Aby opuścić stan wprowadzania produktów prosze wpisać 0.");
 		}
 				System.out.println("Koszt zamówienia wynosi: " + obslugiwane_zamowienie.cena);
@@ -34,7 +34,7 @@ public class Kiosk implements Kasy {
 	}
 	
 	public void wyswietl_menu() {
-		for(Produkty x :  Produkty.IDProduktow.values()) {
+		for(Produkt x :  Produkt.IDProduktow.values()) {
 			x.wydruk();
 		}
 	}

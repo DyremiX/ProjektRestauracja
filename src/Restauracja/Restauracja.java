@@ -14,7 +14,7 @@ public class Restauracja {
     int iloscEkranowKuchniaAktywnych;
     int ostatnioPrzydzielonyEK;
 
-    static ArrayList<Produkty> listaProduktow;
+    static ArrayList<Produkt> listaProduktow;
 
 
     /**
