@@ -46,6 +46,7 @@ class KasaFiskalna implements Kasy{
      */
     public void oplacZamowienie() {
     	obslugiwane_zamowienie.oplacZamowienie();
+    	obslugiwane_zamowienie = null;
     }
 
     /**
@@ -53,12 +54,12 @@ class KasaFiskalna implements Kasy{
      * @return string zawierajacy pelna liste produktow i ich ceny
      */
     public String wyswietlProdukty(){
-    	String lista="";
+    	String lista = "";
     	for(int ID : Produkt.IDProduktow.keySet()) {
-    		Produkt p=Produkt.getProductFromID(ID);
-    		lista+="\n "+p.wydruk();
+    		Produkt p = Produkt.getProductFromID(ID);
+    		lista += "\n " + p.wydruk();
     	}
-    	return "Wszystkie produkty: "+lista;
+    	return "Wszystkie produkty: " + lista;
     }
 
     /**
