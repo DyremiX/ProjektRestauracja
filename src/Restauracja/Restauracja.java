@@ -3,6 +3,9 @@ package Restauracja;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import exceptions.NoActiveObjectsException;
+import exceptions.ObjectNotActiveException;
+
 public class Restauracja {
     int numerRestauracji;
     String adresRestauracji;
@@ -208,7 +211,7 @@ public class Restauracja {
         while (true){
             System.out.println("///Ekran grill///");
             System.out.println(wybranyEkran.wypiszZawartosc());
-            System.out.println("Dotepne przyciski:\n1 - kasuj10:1 \n 2 - kasuj4:1\n 3 - kasujThicker\n0 - wyjdz");
+            System.out.println("Dostepne przyciski:\n1 - kasuj10:1 \n 2 - kasuj4:1\n 3 - kasujThicker\n0 - wyjdz");
 
             int wynik = zarzadzajPrzyciskami(wybranyEkran);
             if(wynik == 0)
@@ -226,18 +229,63 @@ public class Restauracja {
     void zarzadzajKasa(){
 
     }
-    
-    void zarzadzajEkranem() {
+    /* Ehh
+    void wyborEkranu() {
     	Scanner scanner = new Scanner(System.in);
     	while(true) {
-    		System.out.println("///Zarzadzanie Ekranami///\n");
-    		System.out.println("Dostepne Ekrany:\n");
-    		for(Ekran e:listEkranow) {
+    		try {
+    		System.out.println("///Zarzadzanie Ekranami///");
+    		System.out.println("Wybierz ekran wpisujac jego numer od: 1 do " + listEkranow.size());
+    		System.out.println("Wpisz 0 aby wyjsc.");
+    		System.out.println("Dostepne Ekrany:");
+    		
+    		int aktywne=0;
+    		
+    		for(int i=0; i<listEkranow.size(); i++) {
+    			Ekran e=listEkranow.get(i);
+    			String typEkranu = e.typEkranu().toString();
+    			String isActive = (e.czyAktywny() ? ("") : (" - Nieaktywny"));
     			
+    			System.out.println((i+1) + ". Ekran " + typEkranu + isActive);
+    			
+    			if(e.czyAktywny())
+    				aktywne++;
+    		}
+    		
+    		if(aktywne==0) throw new NoActiveObjectsException("Ekran");
+    		
+            int opcja = scanner.nextInt();
+
+            if(opcja == 0)
+                break;
+
+            if(opcja < 0 || opcja > listEkranow.size())
+                continue;
+            
+            Ekran wybranyEkran = listEkranow.get(opcja-1);
+            
+            if(!wybranyEkran.czyAktywny()) throw new ObjectNotActiveException(opcja);
+            
+            switch(wybranyEkran.typEkranu()){
+            	case Service -> zarzadzajEkranService(wybranyEkran);
+            	case Grill -> zarzadzajEkranGrill(wybranyEkran);
+            	case Kurczak -> zarzadzajEkranKurczak(wybranyEkran);
+            	case Kuchnia -> zarzadzajEkranKuchnia(wybranyEkran);
+            }
+            
+            System.out.println("\\\\\\Zarzadzanie Ekranami\\\\\\\n");
+    		System.out.println("\n\n\n\n");
+    		}
+    		catch(ObjectNotActiveException exc) {
+    			System.out.println(exc);
+    		}
+    		catch(NoActiveObjectsException exc) {
+    			System.out.println(exc);
     		}
     	}
+    	scanner.close();
     }
-
+	*/
     /**
      * Funckja pomocnicza do zarzadzania ekranami
      */
