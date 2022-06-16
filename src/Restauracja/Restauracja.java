@@ -286,6 +286,7 @@ public class Restauracja {
     	scanner.close();
     }
 	*/
+    
     /**
      * Funckja pomocnicza do zarzadzania ekranami
      */
