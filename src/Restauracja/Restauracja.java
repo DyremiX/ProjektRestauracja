@@ -8,7 +8,7 @@ public class Restauracja {
     String adresRestauracji;
     String nazwaRestauracji;
     int iloscEkranowKuchnia;
-    ArrayList<Ekrany> listEkranow;
+    ArrayList<Ekran> listEkranow;
     ArrayList<Zamowienie> historiaZamowien;
 
     int iloscEkranowKuchniaAktywnych;
@@ -25,7 +25,7 @@ public class Restauracja {
      * @param iloscEkranowKuchnia Ile ekranow typu kucnia jest zainstalowanych w restauracji
      */
     Restauracja(int numerRestauracji, String adresRestauracji, String nazwaRestauracji, int iloscEkranowKuchnia){
-        listEkranow = new ArrayList<Ekrany>();
+        listEkranow = new ArrayList<Ekran>();
         historiaZamowien = new ArrayList<Zamowienie>();
 
         this.numerRestauracji = numerRestauracji;
@@ -49,7 +49,7 @@ public class Restauracja {
     void ileEkranowKuchniaAktywnych(){
         int i; int s = 0;
         for(i = 3; i < (3+iloscEkranowKuchnia);i++){
-            Ekrany ekranKuchnia = listEkranow.get(i);
+            Ekran ekranKuchnia = listEkranow.get(i);
             if(ekranKuchnia.czyAktywny())
                 s++;
         }
@@ -68,7 +68,7 @@ public class Restauracja {
         ileEkranowKuchniaAktywnych();
 
         for(i = 3; i < (3+iloscEkranowKuchnia);i++){
-            Ekrany ekranKuchnia = listEkranow.get(i);
+            Ekran ekranKuchnia = listEkranow.get(i);
             if(iloscEkranowKuchniaAktywnych == 1){
                 if(ekranKuchnia.czyAktywny()){
                     ekranKuchnia.dodajZamowienie(_zamowienie);
@@ -94,7 +94,7 @@ public class Restauracja {
      * @param wybranyEkran aktualnie wybrany ekran
      * @return zwraca 0 jesli wyjscie, -1 jest blad, 1 jesli poprawnie wykonano funckje
      */
-    int zarzadzajPrzyciskami (Ekrany wybranyEkran){
+    int zarzadzajPrzyciskami (Ekran wybranyEkran){
         Scanner scanner = new Scanner(System.in);
         int opcja = scanner.nextInt();
 
@@ -118,7 +118,7 @@ public class Restauracja {
      */
     void zarzadzajEkranService (){
         Scanner scanner = new Scanner(System.in);
-        Ekrany wybranyEkran = listEkranow.get(0);
+        Ekran wybranyEkran = listEkranow.get(0);
         while (true){
             System.out.println("///Ekran service///");
             System.out.println(wybranyEkran.wypiszZawartosc());
@@ -144,7 +144,7 @@ public class Restauracja {
         Scanner scanner = new Scanner(System.in);
         while (true){
             System.out.println("///Wybierz Ekran Kuchnia///");
-            System.out.println("DostÄ™pne ekrany: " + this.iloscEkranowKuchnia);
+            System.out.println("Dostêpne ekrany: " + this.iloscEkranowKuchnia);
             System.out.println("Wybierz ekran wpisujac jego numer od: 3 do " + 2 + this.iloscEkranowKuchnia);
             System.out.println("Wpisz 0 aby wyjsc.");
             int opcja = scanner.nextInt();
@@ -155,7 +155,7 @@ public class Restauracja {
             if(opcja < 3 || opcja > (2+this.iloscEkranowKuchnia))
                 continue;
 
-            Ekrany wybranyEkran = listEkranow.get(opcja);
+            Ekran wybranyEkran = listEkranow.get(opcja);
             while (true){
                 System.out.println("///Ekran kuchnia///");
                 System.out.println(wybranyEkran.wypiszZawartosc());
@@ -180,7 +180,7 @@ public class Restauracja {
      */
     void zarzadzajEkranKurczak (){
         Scanner scanner = new Scanner(System.in);
-        Ekrany wybranyEkran = listEkranow.get(0);
+        Ekran wybranyEkran = listEkranow.get(0);
         while (true){
             System.out.println("///Ekran kurczak///");
             System.out.println(wybranyEkran.wypiszZawartosc());
@@ -204,7 +204,7 @@ public class Restauracja {
      */
     void zarzadzajEkranGrill (){
         Scanner scanner = new Scanner(System.in);
-        Ekrany wybranyEkran = listEkranow.get(0);
+        Ekran wybranyEkran = listEkranow.get(0);
         while (true){
             System.out.println("///Ekran grill///");
             System.out.println(wybranyEkran.wypiszZawartosc());
@@ -225,6 +225,17 @@ public class Restauracja {
 
     void zarzadzajKasa(){
 
+    }
+    
+    void zarzadzajEkranem() {
+    	Scanner scanner = new Scanner(System.in);
+    	while(true) {
+    		System.out.println("///Zarzadzanie Ekranami///\n");
+    		System.out.println("Dostepne Ekrany:\n");
+    		for(Ekran e:listEkranow) {
+    			
+    		}
+    	}
     }
 
     /**

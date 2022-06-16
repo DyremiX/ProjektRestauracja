@@ -1,6 +1,6 @@
 package Restauracja;
 
-interface Ekrany{
+interface Ekran{
     /**
      * Typy ekranow
      */

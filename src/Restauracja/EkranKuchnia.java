@@ -2,7 +2,7 @@ package Restauracja;
 
 import java.util.ArrayList;
 
-class EkranKuchnia implements Ekrany{
+class EkranKuchnia implements Ekran{
     ArrayList<Zamowienie> zamowienia;
     boolean czyAktywny;
     Zamowienie poprzednieZamowienie;

@@ -2,7 +2,7 @@ package Restauracja;
 
 import java.util.HashMap;
 
-class EkranGrill implements Ekrany{
+class EkranGrill implements Ekran{
     int miesa10_1;
     int miesa4_1;
     int miesaThicker;

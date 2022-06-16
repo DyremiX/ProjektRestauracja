@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-class EkranKurczak implements Ekrany{
+class EkranKurczak implements Ekran{
     int miesaStrips;
     int miesaChick;
     int miesaNuggets;

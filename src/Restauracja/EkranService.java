@@ -2,7 +2,7 @@ package Restauracja;
 
 import java.util.ArrayList;
 
-class EkranService implements Ekrany{
+class EkranService implements Ekran{
     ArrayList<Zamowienie> zamowienia;
         /*Wskazuje jedno z 6 wyswitlanych na ekranie zamowien
         Po wcisinieciu Przycisko serve wskazywane przez nie zamowienie zostanie usuniete z ekranu*/
