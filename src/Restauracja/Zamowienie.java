@@ -8,13 +8,13 @@ import java.util.HashMap;
 public class Zamowienie {
     double cena;
     boolean czyOplacone;
-    HashMap<Integer, Integer> listaProduktow;
+    HashMap<Produkty, Integer> listaProduktow;
 
     /**
      * Konstruktor tworzacy obiekt zamowienie
      */
     Zamowienie(){
-        listaProduktow = new  HashMap<Integer, Integer>();
+        listaProduktow = new  HashMap<Produkty, Integer>();
     }
 
     /**
@@ -23,8 +23,10 @@ public class Zamowienie {
      * @param ilosc ilosc produktu dodawanego do zamowienia
      */
     void dodajProdukt(int idProduktu,int ilosc){
-        int aktualnaIlosc = listaProduktow.get(idProduktu);
-        listaProduktow.put(idProduktu, aktualnaIlosc+ilosc);
+    	Produkty p = Produkty.getProductFromID(idProduktu);
+        int aktualnaIlosc = listaProduktow.get(p);
+        listaProduktow.put(p, aktualnaIlosc+ilosc);
+        cena+=p.getCenaProduktu()*ilosc;
     }
 
     /**
@@ -40,7 +42,11 @@ public class Zamowienie {
      * @return string zawierajacy liste zamowionych produktow, ilosc etc.
      */
     public String wyswietl(){
-        return "";
+    	return "Stan zamowienia: " +
+                "cena: " + cena +
+                ", op≥acone: " + ((czyOplacone)? "tak" : "nie") +
+                ", Zamowione produkty: " + listaProduktow +
+                '}';
     }
 
     /**
@@ -63,10 +69,6 @@ public class Zamowienie {
      * @return lista obiekt√≥w Produkt i ich liczba
      */
 	public HashMap<Produkty, Integer> getListaProduktowIIlosci() {
-		HashMap<Produkty,Integer> lista=new HashMap<>();
-		for (int ID : listaProduktow.keySet()) {
-			lista.put(Produkty.getProductFromID(ID), listaProduktow.get(ID));
-		}
-		return lista;
+		return this.listaProduktow;
 	}
 }

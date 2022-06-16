@@ -47,4 +47,7 @@ class ProduktKurczak implements Produkty{
 	public int getMieso3() {
 		return kurczakNuggets;
 	}
+	public double getCenaProduktu() {
+		return cenaProduktu;
+	};
 }

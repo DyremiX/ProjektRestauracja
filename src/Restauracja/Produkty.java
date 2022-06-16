@@ -22,4 +22,5 @@ interface Produkty {
     int getMieso1();
     int getMieso2();
     int getMieso3();
+    double getCenaProduktu();
 }

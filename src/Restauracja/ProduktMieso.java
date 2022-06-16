@@ -45,4 +45,7 @@ class ProduktMieso implements Produkty{
 	public int getMieso3() {
 		return miesoThicker;
 	}
+	public double getCenaProduktu() {
+		return cenaProduktu;
+	};
 }
