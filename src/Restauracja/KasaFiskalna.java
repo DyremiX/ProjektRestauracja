@@ -1,5 +1,8 @@
 package Restauracja;
 
+import exceptions.IDDoesNotExistException;
+import exceptions.TooManyItemsException;
+
 class KasaFiskalna implements Kasy{
     int nrKasy;
     int zalogowanyPracownik;
@@ -27,8 +30,18 @@ class KasaFiskalna implements Kasy{
      * @param y ilosc produktów
      */
     @Override
-    public void dodajProdukt(int x, int y) {
-        obslugiwane_zamowienie.dodajProdukt(x,y);
+    public void dodajProdukt(int id, int n) {
+    	try {
+    		if(!Produkt.IDProduktow.containsKey(id)) throw new IDDoesNotExistException(id);
+    		if(n>20) throw new TooManyItemsException(n);
+    		obslugiwane_zamowienie.dodajProdukt(id,n);
+    	}
+    	catch(IDDoesNotExistException exc) {
+    		System.out.println(exc);
+    	}
+    	catch(TooManyItemsException exc) {
+    		System.out.println(exc);
+    	}
     }
 
     /**
