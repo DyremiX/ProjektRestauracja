@@ -10,20 +10,44 @@ public class Zamowienie {
     boolean czyOplacone;
     HashMap<Integer, Integer> listaProduktow;
 
+    /**
+     * Konstruktor tworzacy obiekt zamowienie
+     */
     Zamowienie(){
         listaProduktow = new  HashMap<Integer, Integer>();
     }
 
+    /**
+     * Funkcja dodajaca do zamowienia produkt i jego zamowiona ilosc
+     * @param idProduktu id produktu dodawanego do zamowienia
+     * @param ilosc ilosc produktu dodawanego do zamowienia
+     */
     void dodajProdukt(int idProduktu,int ilosc){
         int aktualnaIlosc = listaProduktow.get(idProduktu);
         listaProduktow.put(idProduktu, aktualnaIlosc+ilosc);
     }
+
+    /**
+     * Funckja dodajaca do zamowienia 1 produkt
+     * @param idProduktu id produktu dodawanego do zamowienia
+     */
     void dodajProdukt(int idProduktu){
     	dodajProdukt(idProduktu,1);
     }
 
+    /**
+     * Funckja zwracajaca informacje o zamowieniu
+     * @return string zawierajacy liste zamowionych produktow, ilosc etc.
+     */
     public String wyswietl(){
         return "";
+    }
+
+    /**
+     * Funckja zmieniajaca status zamowienia jako oplacone
+     */
+    void oplacZamowienie(){
+        czyOplacone = true;
     }
 
     @Override
@@ -36,7 +60,7 @@ public class Zamowienie {
     }
     /**
      * Zwraca
-     * @return lista obiektów Produkt i ich liczba
+     * @return lista obiektÃ³w Produkt i ich liczba
      */
 	public HashMap<Produkty, Integer> getListaProduktowIIlosci() {
 		HashMap<Produkty,Integer> lista=new HashMap<>();
