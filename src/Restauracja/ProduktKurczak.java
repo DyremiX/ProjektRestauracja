@@ -1,10 +1,11 @@
 package Restauracja;
 
-import Restauracja.Produkty.rodzajMiesa;
+//import Restauracja.Produkty.rodzajMiesa;
 
 class ProduktKurczak implements Produkty{
     final String nazwaProduktu;
     final double cenaProduktu;
+    int idProduktu;
     final int kurczakStrips;
     final int kurczakChick;
     final int kurczakNuggets;
@@ -18,17 +19,18 @@ class ProduktKurczak implements Produkty{
      * @param kCh Ilosc kotletow z Kurczaka
      * @param kN Ilosc nuggetsow
      */
-    ProduktKurczak(String _nazwa, double _cena, int kS, int kCh, int kN){
+    ProduktKurczak(String _nazwa, double _cena,int id, int kS, int kCh, int kN){
         this.nazwaProduktu = _nazwa;
         this.cenaProduktu = _cena;
+        this.idProduktu = id;
         this.kurczakStrips = kS;
         this.kurczakChick = kCh;
         this.kurczakNuggets = kN;
     }
 
     @Override
-    public void wydruk() {
-
+    public String wydruk() {
+    	return "Id: "+idProduktu+" Nazwa: "+nazwaProduktu+" Cena: "+cenaProduktu;
     }
     public rodzajMiesa rodzajMiesa() {
     	return rodzajMiesa.Kurczak;
@@ -49,5 +51,8 @@ class ProduktKurczak implements Produkty{
 	}
 	public double getCenaProduktu() {
 		return cenaProduktu;
-	};
+	}
+	public int getIDproduktu() {
+		return idProduktu;
+	}
 }

@@ -42,11 +42,14 @@ public class Zamowienie {
      * @return string zawierajacy liste zamowionych produktow, ilosc etc.
      */
     public String wyswietl(){
+    	String lista="";
+    	for(Produkty p:listaProduktow.keySet()) {
+    		lista+="\n Iloœæ: "+listaProduktow.get(p)+", "+p.wydruk();
+    	}
     	return "Stan zamowienia: " +
-                "cena: " + cena +
-                ", op³acone: " + ((czyOplacone)? "tak" : "nie") +
-                ", Zamowione produkty: " + listaProduktow +
-                '}';
+                "Cena: " + cena +
+                ", Op³acone: " + ((czyOplacone)? "tak" : "nie") +
+                ", Zamowione produkty: " + lista;
     }
 
     /**

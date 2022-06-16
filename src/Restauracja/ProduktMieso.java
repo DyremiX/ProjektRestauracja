@@ -3,6 +3,7 @@ package Restauracja;
 class ProduktMieso implements Produkty{
     final String nazwaProduktu;
     final double cenaProduktu;
+    final int idProduktu;
     final int mieso101;
     final int mieso41;
     final int miesoThicker;
@@ -15,17 +16,18 @@ class ProduktMieso implements Produkty{
      * @param m4 Ilosc kotletow 4:1
      * @param mT Ilosc kotletow Thicker
      */
-    ProduktMieso(String _nazwa, double _cena, int m10, int m4, int mT){
+    ProduktMieso(String _nazwa, double _cena, int id, int m10, int m4, int mT){
         this.nazwaProduktu = _nazwa;
         this.cenaProduktu = _cena;
+        this.idProduktu=id;
         this.mieso101 = m10;
         this.mieso41 = m4;
         this.miesoThicker = mT;
     }
 
     @Override
-    public void wydruk() {
-
+    public String wydruk() {
+    	return "Id: "+idProduktu+" Nazwa: "+nazwaProduktu+" Cena: "+cenaProduktu;
     }
     public rodzajMiesa rodzajMiesa() {
     	return rodzajMiesa.Mieso;
@@ -48,4 +50,7 @@ class ProduktMieso implements Produkty{
 	public double getCenaProduktu() {
 		return cenaProduktu;
 	};
+	public int getIDproduktu() {
+		return idProduktu;
+	}
 }
