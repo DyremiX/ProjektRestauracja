@@ -295,7 +295,7 @@ public class Restauracja {
         Scanner scanner = new Scanner(System.in);
         while (true){
             if(wybranyTypEkranu == 0){
-                System.out.println("Wybierz ekran, ktorym chcesz zarzadzac:\n1 - EkanService\n2 - EkranKuchnia\n3 - EkranGrill\n4 - EkranKurczak\n5 - Kasy");
+                System.out.println("Wybierz czym chcesz zarzadzac:\n1 - EkanService\n2 - EkranKuchnia\n3 - EkranGrill\n4 - EkranKurczak\n5 - Kasy");
                 wybranyTypEkranu = scanner.nextInt();
                 if(wybranyTypEkranu < 1 || wybranyTypEkranu > 5){
                     wybranyTypEkranu = 0;
