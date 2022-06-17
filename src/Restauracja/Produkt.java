@@ -27,6 +27,10 @@ interface Produkt extends Serializable{
     	IDProduktow.put(p.getIDproduktu(), p);
     }
     
+    public static void usunProdukt(int ID) {
+    	IDProduktow.remove(ID);
+    }
+    
     public static Produkt getProductFromID(int ID) {
     	return IDProduktow.get(ID);
     }
