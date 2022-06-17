@@ -16,6 +16,7 @@ interface Produkt {
     public static void dodajProdukt(Produkt produkt) {
     	IDProduktow.put(produkt.getIDproduktu(), produkt);
     }
+    public static boolean czyZainicjalizowano = false;
     public static Produkt getProductFromID(int ID) {
     	return IDProduktow.get(ID);
     }
