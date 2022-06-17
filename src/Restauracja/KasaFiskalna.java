@@ -15,6 +15,9 @@ class KasaFiskalna implements Kasy{
     KasaFiskalna (int nrKasy){
         this.nrKasy = nrKasy;
     }
+    public int getID() {
+    	return nrKasy;
+    }
 
     void zalogujPracownika (int zalogowanyPracownik){
         if(obslugiwane_zamowienie == null) this.zalogowanyPracownik = zalogowanyPracownik;

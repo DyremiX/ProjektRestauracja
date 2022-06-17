@@ -15,6 +15,9 @@ public class Kiosk implements Kasy {
     public Kiosk(int iD_Kiosku) {
 		ID_Kiosku = iD_Kiosku;
 	}
+    public int getID() {
+    	return ID_Kiosku;
+    }
 
 	@Override
 	public void rozpocznijZamowienie() {

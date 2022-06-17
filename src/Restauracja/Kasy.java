@@ -29,5 +29,7 @@ interface Kasy extends Serializable{
      * @return informacje o aktualnym zamowieniu
      */
     String wyswietlZamowienie();
+    
+    int getID();
 
 }

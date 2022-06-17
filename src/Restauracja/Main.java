@@ -2,6 +2,7 @@ package Restauracja;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Helllllllo world!");
+        Restauracja r = new Restauracja(0, "try", "Cacdonald", 4);
+        r.aktywuj();
     }
 }

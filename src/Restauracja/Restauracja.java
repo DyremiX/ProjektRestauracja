@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 import javax.sql.rowset.serial.SerialArray;
 
+import exceptions.IDDoesNotExistException;
 import exceptions.NoActiveObjectsException;
 import exceptions.ObjectNotActiveException;
+import exceptions.WrongNumberException;
 
 public class Restauracja implements Serializable{
     int numerRestauracji;
@@ -15,6 +17,7 @@ public class Restauracja implements Serializable{
     String nazwaRestauracji;
     int iloscEkranowKuchnia;
     ArrayList<Ekran> listEkranow;
+    ArrayList<Kasy> listKas;
     ArrayList<Zamowienie> historiaZamowien;
 
     int iloscEkranowKuchniaAktywnych;
@@ -43,6 +46,9 @@ public class Restauracja implements Serializable{
         listEkranow.add(new EkranService());
         listEkranow.add(new EkranGrill());
         listEkranow.add(new EkranKurczak());
+        
+        listKas.add(new KasaFiskalna(1));
+        listKas.add(new Kiosk(2));
 
         for (int i = 0; i < iloscEkranowKuchnia; i++) {
             listEkranow.add(new EkranKuchnia());
@@ -145,7 +151,6 @@ public class Restauracja implements Serializable{
             case 2 -> wybranyEkran.przycisk2();
             case 3 -> wybranyEkran.przycisk3();
         }
-        scanner.close();
         return 1;
     }
 
@@ -170,7 +175,6 @@ public class Restauracja implements Serializable{
             System.out.println("\\\\\\Ekran service\\\\\\");
             System.out.println("\n\n\n\n");
         }
-        scanner.close();
     }
 
     /**
@@ -181,7 +185,7 @@ public class Restauracja implements Serializable{
         while (true) {
             System.out.println("///Wybierz Ekran Kuchnia///");
             System.out.println("Dostï¿½pne ekrany: " + this.iloscEkranowKuchnia);
-            System.out.println("Wybierz ekran wpisujac jego numer od: 3 do " + 2 + this.iloscEkranowKuchnia);
+            System.out.println("Wybierz ekran wpisujac jego numer od: 3 do " + (2 + this.iloscEkranowKuchnia));
             System.out.println("Wpisz 0 aby wyjsc.");
             int opcja = scanner.nextInt();
 
@@ -208,7 +212,6 @@ public class Restauracja implements Serializable{
                 System.out.println("\n\n\n\n");
             }
         }
-        scanner.close();
     }
 
     /**
@@ -232,7 +235,6 @@ public class Restauracja implements Serializable{
             System.out.println("\\\\\\Ekran kurczak\\\\\\");
             System.out.println("\n\n\n\n");
         }
-        scanner.close();
     }
 
     /**
@@ -256,14 +258,73 @@ public class Restauracja implements Serializable{
             System.out.println("\\\\\\Ekran grill\\\\\\");
             System.out.println("\n\n\n\n");
         }
-        scanner.close();
     }
     /**
      * Funkcja do zarz¹dzania kas¹
      */
-    void zarzadzajKasa(){
-    		
+    void zarzadzajKasami(){
+    	Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("///Wybór kasy///");
+            System.out.println("Dostepne kasy:\1.Kasa Fiskalna \n 2.Kiosk \n 0.Wyjdz");
+
+            int wynik = scanner.nextInt();
+            if (wynik == 0)
+                break;
+
+            if (wynik<0||wynik>listKas.size()+1)
+            	continue;
+            
+            Kasy kasa=listKas.get(wynik-1);
+            switch(wynik) {
+            case 1 -> zarzadzajKasa(kasa);
+            case 2 -> zarzadzajKasa(kasa);
+            }
+
+            System.out.println("\\\\\\Wybór kasy\\\\\\");
+            System.out.println("\n\n\n\n");
+        	}
     	}
+    void zarzadzajKasa(Kasy k) {
+    	Scanner scanner = new Scanner(System.in);
+    	while(true) {
+    		System.out.println("///Kasa Fiskalna Nr."+k.getID()+"///");
+	        System.out.println("Dostepne opcje:\n 1 - Zacznij zamowienie \n 2 - Dodaj produkt\n 3 - Zamknij zamowienie\n 4 - Wyœwietl Produkty\n 5 - Wyœwietl Zamowienie\n 0 - wyjdz");
+	        int wynik = scanner.nextInt();
+	        if (wynik == 0)
+	            break;
+	
+	        if (wynik<0||wynik>5)
+	        	continue;
+	        int ID=0;
+	        int ilosc=0;
+	        if (wynik == 2) {
+	        	System.out.println("///Wpisz ID produktu i iloœæ");
+	        	try {
+	        		ID=scanner.nextInt();
+	        		ilosc=scanner.nextInt();
+	        		if(!Produkt.IDProduktow.containsKey(ID)) throw new IDDoesNotExistException(ID);
+	        		if(ilosc < -1) throw new WrongNumberException(ilosc);
+	        	}
+	        	catch(IDDoesNotExistException exc){
+	        		System.out.println(exc);
+	        		continue;
+	        	}
+	        	catch(WrongNumberException exc){
+	        		System.out.println(exc);
+	        		continue;
+	        	}
+	        }
+	        switch(wynik) {
+	        case 1 -> k.rozpocznijZamowienie();
+	        case 2 -> k.dodajProdukt(ID,ilosc);
+	        case 3 -> k.zamknijZamowienie();
+	        case 4 -> k.wyswietlProdukty();
+	        case 5 -> k.wyswietlZamowienie();
+	        }
+    	}
+    	
+    }
 
     /* Ehh
     void wyborEkranu() {
@@ -339,26 +400,15 @@ public class Restauracja implements Serializable{
                 }
 
                 switch (wybranyTypEkranu) {
-                    case 1:
-                        zarzadzajEkranService();
-                        break;
-                    case 2:
-                        zarzadzajEkranKuchnia();
-                        break;
-                    case 3:
-                        zarzadzajEkranGrill();
-                        break;
-                    case 4:
-                        zarzadzajEkranKurczak();
-                        break;
-                    case 5:
-                        zarzadzajKasa();
-                        break;
+                    case 1 -> zarzadzajEkranService();
+                    case 2 -> zarzadzajEkranKuchnia();
+                    case 3 -> zarzadzajEkranGrill();
+                    case 4 -> zarzadzajEkranKurczak();
+                    case 5 -> zarzadzajKasami();
                 }
 
             }
         }
-        //scanner.close();
     }
 
 
