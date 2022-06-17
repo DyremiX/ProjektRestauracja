@@ -16,7 +16,9 @@ class EkranService implements Ekran{
     ArrayList<Zamowienie> zamowieniaNaEkranie;
     boolean czyPrzywolano;
 
-
+    /**
+     * Tworzy nowy ekran typu Service
+     */
     EkranService(){
         this.zamowieniaNaEkranie = new ArrayList<Zamowienie>();
         this.cursor = 0;

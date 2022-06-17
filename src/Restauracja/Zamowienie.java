@@ -1,11 +1,12 @@
 package Restauracja;
 
+import java.io.Serializable;
 //import java.util.ArrayList;
 import java.util.HashMap;
 
 //import Utils.Pair;
 
-public class Zamowienie {
+public class Zamowienie implements Serializable{
     double cena;
     boolean czyOplacone;
     HashMap<Produkt, Integer> listaProduktow;
@@ -15,6 +16,8 @@ public class Zamowienie {
      */
     Zamowienie(){
         listaProduktow = new  HashMap<Produkt, Integer>();
+        cena=0;
+        czyOplacone=false;
     }
 
     /**
@@ -68,8 +71,8 @@ public class Zamowienie {
                 '}';
     }
     /**
-     * Zwraca
-     * @return lista obiektÃ³w Produkt i ich liczba
+     * Zwraca listê produktów i ich liczbe w zamówieniu
+     * @return lista obiektów Produkt i ich liczba
      */
 	public HashMap<Produkt, Integer> getListaProduktowIIlosci() {
 		return this.listaProduktow;

@@ -1,14 +1,18 @@
 package Restauracja;
 import java.util.Scanner;
 import  cash.Karta;
+import exceptions.IDDoesNotExistException;
+import exceptions.TooManyItemsException;
 
 
 public class Kiosk implements Kasy {
 	int ID_Kiosku;
     Zamowienie obslugiwane_zamowienie;
-    
+    /**
+     * tworzy nowy kiosk o danym id
+     * @param iD_Kiosku
+     */
     public Kiosk(int iD_Kiosku) {
-		super();
 		ID_Kiosku = iD_Kiosku;
 	}
 
@@ -16,7 +20,7 @@ public class Kiosk implements Kasy {
 	public void rozpocznijZamowienie() {
 		Scanner x = new Scanner(System.in);
 		obslugiwane_zamowienie = new Zamowienie();
-		wyswietl_menu();
+		wyswietlProdukty();
 		System.out.println("Proszę wpisać odpowiednie id produktu a następnie ilość ([id] [ilość]).");
 		int id,ilosc;
 		while(true) {
@@ -33,26 +37,34 @@ public class Kiosk implements Kasy {
 			
 	}
 	
-	public void wyswietl_menu() {
-		for(Produkt x :  Produkt.IDProduktow.values()) {
-			x.wydruk();
-		}
+	public String wyswietlProdukty() {
+		String lista = "";
+    	for(int ID : Produkt.IDProduktow.keySet()) {
+    		Produkt p = Produkt.getProductFromID(ID);
+    		lista += "\n " + p.wydruk();
+    	}
+    	return "Wszystkie produkty: " + lista;
 	}
 
 	@Override
-    public void dodajProdukt(int x, int y) {
-        obslugiwane_zamowienie.dodajProdukt(x, y);
+    public void dodajProdukt(int id, int n) {
+		try {
+    		if(!Produkt.IDProduktow.containsKey(id)) throw new IDDoesNotExistException(id);
+    		if(n>20) throw new TooManyItemsException(n);
+    		obslugiwane_zamowienie.dodajProdukt(id,n);
+    	}
+    	catch(IDDoesNotExistException exc) {
+    		System.out.println(exc);
+    	}
+    	catch(TooManyItemsException exc) {
+    		System.out.println(exc);
+    	}
     }
 
 	@Override
 	public Zamowienie zamknijZamowienie() {
 		//System.out.print("Dziękujemy za Zakupy");
 		return obslugiwane_zamowienie;
-	}
-
-	@Override
-	public String wyswietlProdukty() {
-		return null;
 	}
 
 	@Override
@@ -63,7 +75,7 @@ public class Kiosk implements Kasy {
 	public Boolean oplacZamowienie(Karta card) {
 		System.out.print(obslugiwane_zamowienie);
 		if(card.Withdraw(obslugiwane_zamowienie.cena)) {
-			obslugiwane_zamowienie.czyOplacone = true;
+			obslugiwane_zamowienie.oplacZamowienie();
 			zamknijZamowienie();
 			return true;
 		}else {

@@ -8,7 +8,10 @@ class KasaFiskalna implements Kasy{
     int zalogowanyPracownik;
     Zamowienie obslugiwane_zamowienie;
 
-
+    /**
+     * Tworzy now¹ kasê o danym numerze
+     * @param nrKasy
+     */
     KasaFiskalna (int nrKasy){
         this.nrKasy = nrKasy;
     }
@@ -59,7 +62,6 @@ class KasaFiskalna implements Kasy{
      */
     public void oplacZamowienie() {
     	obslugiwane_zamowienie.oplacZamowienie();
-    	obslugiwane_zamowienie = null;
     }
 
     /**

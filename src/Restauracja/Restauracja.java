@@ -1,12 +1,15 @@
 package Restauracja;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.sql.rowset.serial.SerialArray;
 
 import exceptions.NoActiveObjectsException;
 import exceptions.ObjectNotActiveException;
 
-public class Restauracja {
+public class Restauracja implements Serializable{
     int numerRestauracji;
     String adresRestauracji;
     String nazwaRestauracji;
@@ -61,6 +64,10 @@ public class Restauracja {
         }
         this.iloscEkranowKuchniaAktywnych = s;
     }
+    /**
+     * Funkcja równo dziel¹ca zamówienie miêdzy ekranami kuchnii
+     * @param _zamowienie - zamówienie do podzielenia miêdzy ekranami
+     */
 
     void podzielZamowienie(Zamowienie _zamowienie){
         int i;
@@ -225,7 +232,9 @@ public class Restauracja {
         }
         scanner.close();
     }
-
+    /**
+     * Funkcja do zarz¹dzania kas¹
+     */
     void zarzadzajKasa(){
 
     }

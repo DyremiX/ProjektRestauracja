@@ -24,7 +24,7 @@ class ProduktMieso implements Produkt{
         this.mieso41 = m4;
         this.miesoThicker = mT;
     }
-
+    
     @Override
     public String wydruk() {
     	return "Id: "+idProduktu+" Nazwa: "+nazwaProduktu+" Cena: "+cenaProduktu;

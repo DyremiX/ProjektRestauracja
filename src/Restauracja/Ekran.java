@@ -1,6 +1,8 @@
 package Restauracja;
 
-interface Ekran{
+import java.io.Serializable;
+
+interface Ekran extends Serializable{
     /**
      * Typy ekranow
      */
@@ -10,7 +12,7 @@ interface Ekran{
         Kurczak,
         Service
     }
-
+    
     void przycisk1();
     void przycisk2();
     void przycisk3();
@@ -19,7 +21,10 @@ interface Ekran{
      * @return typEkranu
      */
     typEkranu typEkranu();
-    
+    /**
+     * Zwraca iloœæ zamówieñ przypisana dla danego ekranu
+     * @return iloœæ zamówieñ
+     */
     int ileZamowien();
 
     /**

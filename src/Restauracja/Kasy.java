@@ -1,6 +1,8 @@
 package Restauracja;
 
-interface Kasy{
+import java.io.Serializable;
+
+interface Kasy extends Serializable{
     /**
      * Funkcja rozpoaczynajaca tworzenie nowego zamowienia
      */
