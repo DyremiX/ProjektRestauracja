@@ -21,23 +21,7 @@ public class Kiosk implements Kasy {
 
 	@Override
 	public void rozpocznijZamowienie() {
-		Scanner x = new Scanner(System.in);
 		obslugiwane_zamowienie = new Zamowienie();
-		wyswietlProdukty();
-		System.out.println("Proszę wpisać odpowiednie id produktu a następnie ilość ([id] [ilość]).");
-		int id,ilosc;
-		while(true) {
-			id = x.nextInt();
-			if(id == 99999) break;
-			ilosc = x.nextInt();
-			dodajProdukt(x.nextInt(), x.nextInt());
-			System.out.printf("Dodano %d %s do twojego zamówienia \n",ilosc,Produkt.IDProduktow.get(id));
-			System.out.printf("Aby opuścić stan wprowadzania produktów prosze wpisać 0.");
-		}
-				System.out.println("Koszt zamówienia wynosi: " + obslugiwane_zamowienie.cena);
-				x.close();
-				return;
-			
 	}
 	
 	public String wyswietlProdukty() {
