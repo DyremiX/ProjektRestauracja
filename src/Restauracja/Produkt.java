@@ -35,6 +35,7 @@ interface Produkt extends Serializable{
      * @param ID
      * @return produkt z danym ID
      */
+    public static boolean czyZainicjalizowano = false;
     public static Produkt getProductFromID(int ID) {
     	return IDProduktow.get(ID);
     }
