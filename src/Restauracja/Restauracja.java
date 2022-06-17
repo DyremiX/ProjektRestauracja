@@ -362,6 +362,8 @@ public class Restauracja implements Serializable{
 
                     wybranyTypEkranu = _scanner.nextInt();
                     System.out.println(wybranyTypEkranu);
+                    if(wybranyTypEkranu == 99)
+                        break;
                     if (wybranyTypEkranu < 1 || wybranyTypEkranu > 5) {
                         //throw new ObjectDoesntExist(wybranyTypEkranu);
                     }
