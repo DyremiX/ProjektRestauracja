@@ -19,26 +19,20 @@ interface Produkt extends Serializable{
         Mieso,
         Brak
     }
-
-
-    rodzajMiesa rodzajMiesa();
-    public static final HashMap<Integer, Produkt> IDProduktow = new HashMap<Integer, Produkt>();
-    /**
-     * Dodaje produkt i jego id do listy produktów
-     * @param produkt
-     */
-    public static void dodajProdukt(Produkt produkt) {
-    	IDProduktow.put(produkt.getIDproduktu(), produkt);
-    }
-    /**
-     * Zwraca Produkt na bazie podanego ID
-     * @param ID
-     * @return produkt z danym ID
-     */
     public static boolean czyZainicjalizowano = false;
+    
+    public static HashMap<Integer,Produkt> IDProduktow = new HashMap<>();
+    
+    public static void dodajProdukt(Produkt p) {
+    	IDProduktow.put(p.getIDproduktu(), p);
+    }
+    
     public static Produkt getProductFromID(int ID) {
     	return IDProduktow.get(ID);
     }
+
+    rodzajMiesa rodzajMiesa();
+    
     /**
      * Zwraca iloœæ miêsa 1 w produkcie
      * @return iloœæ miêsa 1

@@ -19,7 +19,9 @@ public class Zamowienie implements Serializable{
         cena=0;
         czyOplacone=false;
     }
-
+    
+    
+    
     /**
      * Funkcja dodajaca do zamowienia produkt i jego zamowiona ilosc
      * @param idProduktu id produktu dodawanego do zamowienia
