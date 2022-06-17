@@ -29,8 +29,13 @@ public class Zamowienie implements Serializable{
      */
     void dodajProdukt(int idProduktu,int ilosc){
     	Produkt p = Produkt.getProductFromID(idProduktu);
-        int aktualnaIlosc = listaProduktow.get(p);
-        listaProduktow.put(p, aktualnaIlosc+ilosc);
+        if(listaProduktow.get(p) != null){
+            int aktualnaIlosc = listaProduktow.get(p);
+            listaProduktow.put(p, aktualnaIlosc+ilosc);
+        }else{
+            listaProduktow.put(p, ilosc);
+        }
+
         cena+=p.getCenaProduktu()*ilosc;
     }
 

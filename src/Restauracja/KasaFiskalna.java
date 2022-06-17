@@ -32,8 +32,8 @@ class KasaFiskalna implements Kasy{
 
     /**
      * Funckja dodajaca do aktualnie otwartego zamowienia produkt
-     * @param x idProduktu dodawanego do zamowienia
-     * @param y ilosc produktów
+     * @param id idProduktu dodawanego do zamowienia
+     * @param n ilosc produktów
      */
     @Override
     public void dodajProdukt(int id, int n) {
@@ -71,20 +71,20 @@ class KasaFiskalna implements Kasy{
      * Funckja zwracajaca informacje o wszystkich dostepnych produktach
      * @return string zawierajacy pelna liste produktow i ich ceny
      */
-    public String wyswietlProdukty(){
+    public void wyswietlProdukty(){
     	String lista = "";
     	for(int ID : Produkt.IDProduktow.keySet()) {
     		Produkt p = Produkt.getProductFromID(ID);
     		lista += "\n " + p.wydruk();
     	}
-    	return "Wszystkie produkty: " + lista;
+        System.out.println("Wszystkie produkty: " + lista);
     }
 
     /**
      * Funkcja zwracająca informacje o aktualnym zamowieniu
      * @return informacje o aktualnym zamowieniu
      */
-    public String wyswietlZamowienie(){
-        return obslugiwane_zamowienie.wyswietl();
+    public void wyswietlZamowienie(){
+        System.out.println(obslugiwane_zamowienie.wyswietl());
     }
 }

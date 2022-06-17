@@ -22,13 +22,13 @@ interface Kasy extends Serializable{
      * Funckja zwracajaca informacje o wszystkich dostepnych produktach
      * @return string zawierajacy pelna liste produktow i ich ceny
      */
-     String wyswietlProdukty();
+     void wyswietlProdukty();
 
     /**
      * Funkcja zwracająca informacje o aktualnym zamowieniu
      * @return informacje o aktualnym zamowieniu
      */
-    String wyswietlZamowienie();
+    void wyswietlZamowienie();
     
     int getID();
 
