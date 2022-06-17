@@ -83,18 +83,25 @@ class EkranKuchnia implements Ekran{
      */
     @Override
     public String wypiszZawartosc() {
+        String w = "Ekran: " + (this.czyAktywny ? "aktywny" : "wylaczony");
     	if(wyswietlOstatnie) {
-    		return "Poprzednie Zamowienie: " +poprzednieZamowienie.wyswietl();
-    	}
-    	else {
-    		String zamowieniaString="";
-        	for(int i=0;i<6;i++) {
-        		Zamowienie z=zamowienia.get(i);
-        		zamowieniaString+=z.toString();
-        		zamowieniaString+="\n";
-        	}
-        	return "Aktualne Zamowienia:\n "+zamowieniaString;
+            if(zamowienia.size() == 0){
+                w += "\nBrak zamowien do przywolania";
+            }else
+                w +=  "\nPoprzednie Zamowienie: " +poprzednieZamowienie.wyswietl();
+    	} else {
+            if(zamowienia.size() == 0)
+                w += "\nBrak zamowien do wysietlenia";
+            else{
+                w += "\"Aktualne Zamowienia:\n";
+                for(int i=0;i<6;i++) {
+                    Zamowienie z=zamowienia.get(i);
+                    w+=z.toString();
+                    w+="\n";
+                }
+            }
         }
+        return w;
     }
 
 	@Override
