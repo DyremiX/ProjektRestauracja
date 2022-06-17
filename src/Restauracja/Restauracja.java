@@ -49,7 +49,7 @@ public class Restauracja implements Serializable{
         listEkranow.add(new EkranKurczak());
         
         listKas.add(new KasaFiskalna(1));
-        listKas.add(new Kiosk(2);
+        listKas.add(new Kiosk(2));
 
         for (int i = 0; i < iloscEkranowKuchnia; i++) {
             this.listEkranow.add(new EkranKuchnia());
@@ -187,8 +187,7 @@ public class Restauracja implements Serializable{
 
 
             System.out.println("\\\\\\Ekran service\\\\\\");
-            System.out.println("\n
-\n\n\n");
+            System.out.println("\n\n\n\n");
         }
 
         //scanner.close();
@@ -448,7 +447,7 @@ public class Restauracja implements Serializable{
                         case 2 -> zarzadzajEkranKuchnia();
                         case 3 -> zarzadzajEkranGrill();
                         case 4 -> zarzadzajEkranKurczak();
-                        case 5 -> zarzadzajKasa();
+                        case 5 -> zarzadzajKasami();
                     }
 
             }
