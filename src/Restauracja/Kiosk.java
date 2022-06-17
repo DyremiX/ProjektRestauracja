@@ -24,13 +24,13 @@ public class Kiosk implements Kasy {
 		obslugiwane_zamowienie = new Zamowienie();
 	}
 	
-	public String wyswietlProdukty() {
+	public void wyswietlProdukty() {
 		String lista = "";
     	for(int ID : Produkt.IDProduktow.keySet()) {
     		Produkt p = Produkt.getProductFromID(ID);
     		lista += "\n " + p.wydruk();
     	}
-    	return "Wszystkie produkty: " + lista;
+    	System.out.println("Wszystkie produkty: " + lista);
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class Kiosk implements Kasy {
 	}
 
 	@Override
-	public String wyswietlZamowienie() {
-		return obslugiwane_zamowienie.wyswietl();
+	public void wyswietlZamowienie() {
+		System.out.println(obslugiwane_zamowienie.wyswietl());
 	}
 
 	public Boolean oplacZamowienie(Karta card) {

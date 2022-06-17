@@ -111,7 +111,7 @@ class EkranService implements Ekran{
      */
     @Override
     public String wypiszZawartosc() {
-
+        String zamowieniaString = "";
     	if(wyswietlOstatnie) {
             if(poprzednieZamowienie != null)
     		    return "Poprzednie Zamowienie: " +poprzednieZamowienie.wyswietl();
@@ -120,16 +120,19 @@ class EkranService implements Ekran{
     	else {
             if(zamowienia.size() == 0)
                 return "Brak zamowien na ekranie";
-    		String zamowieniaString="";
-        	for(int i=0;i<6;i++) {
-        		Zamowienie z=zamowienia.get(i);
-        		if(i==cursor)
-        			zamowieniaString+=">>";
-        		zamowieniaString+=z.toString();
-        		if(i==cursor)
-        			zamowieniaString+="<<";
-        		zamowieniaString+="\n";
-        	}
+            else{
+
+                for(int i=0;i<zamowienia.size();i++) {
+                    Zamowienie z=zamowienia.get(i);
+                    if(i==cursor)
+                        zamowieniaString+=">>";
+                    zamowieniaString+=z.wyswietl();
+                    if(i==cursor)
+                        zamowieniaString+="<<";
+                    zamowieniaString+="\n";
+                }
+            }
+
         	return "Aktualne Zamowienia: "+zamowieniaString;
         }
     }

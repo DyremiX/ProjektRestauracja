@@ -94,9 +94,9 @@ class EkranKuchnia implements Ekran{
                 w += "\nBrak zamowien do wysietlenia";
             else{
                 w += "\"Aktualne Zamowienia:\n";
-                for(int i=0;i<6;i++) {
+                for(int i=0;i<zamowienia.size();i++) {
                     Zamowienie z=zamowienia.get(i);
-                    w+=z.toString();
+                    w+=z.wyswietl();
                     w+="\n";
                 }
             }
