@@ -21,31 +21,16 @@ public class Kiosk implements Kasy {
 
 	@Override
 	public void rozpocznijZamowienie() {
-		Scanner x = new Scanner(System.in);
 		obslugiwane_zamowienie = new Zamowienie();
-		wyswietlProdukty();
-		System.out.println("Proszę wpisać odpowiednie id produktu a następnie ilość ([id] [ilość]).");
-		int id,ilosc;
-		while(true) {
-			id = x.nextInt();
-			if(id == 0) break;
-			ilosc = x.nextInt();
-			dodajProdukt(id, ilosc);
-			System.out.printf("Dodano %d %s do twojego zamówienia \n",ilosc,Produkt.IDProduktow.get(id));
-			System.out.printf("Aby opuścić stan wprowadzania produktów prosze wpisać 0.");
-		}
-				System.out.println("Koszt zamówienia wynosi: " + obslugiwane_zamowienie.cena);
-				return;
-			
 	}
 	
-	public void wyswietlProdukty() {
+	public String wyswietlProdukty() {
 		String lista = "";
     	for(int ID : Produkt.IDProduktow.keySet()) {
     		Produkt p = Produkt.getProductFromID(ID);
     		lista += "\n " + p.wydruk();
     	}
-    	System.out.println("Wszystkie produkty: " + lista);
+    	return "Wszystkie produkty: " + lista;
 	}
 
 	@Override
@@ -70,8 +55,8 @@ public class Kiosk implements Kasy {
 	}
 
 	@Override
-	public void wyswietlZamowienie() {
-		System.out.println(obslugiwane_zamowienie.wyswietl());
+	public String wyswietlZamowienie() {
+		return obslugiwane_zamowienie.wyswietl();
 	}
 
 	public Boolean oplacZamowienie(Karta card) {

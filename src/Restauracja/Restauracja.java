@@ -356,7 +356,7 @@ public class Restauracja implements Serializable{
 	        switch(wynik) {
 	        case 1 -> k.rozpocznijZamowienie();
 	        case 2 -> k.dodajProdukt(ID,ilosc);
-	        case 3 -> k.zamknijZamowienie();
+	        case 3 -> podzielZamowienie(k.zamknijZamowienie());
 	        case 4 -> k.wyswietlProdukty();
 	        case 5 -> k.wyswietlZamowienie();
 	        }
