@@ -113,9 +113,13 @@ class EkranService implements Ekran{
     public String wypiszZawartosc() {
 
     	if(wyswietlOstatnie) {
-    		return "Poprzednie Zamowienie: " +poprzednieZamowienie.wyswietl();
+            if(poprzednieZamowienie != null)
+    		    return "Poprzednie Zamowienie: " +poprzednieZamowienie.wyswietl();
+            return "Brak zamowien do przywolania";
     	}
     	else {
+            if(zamowienia.size() == 0)
+                return "Brak zamowien na ekranie";
     		String zamowieniaString="";
         	for(int i=0;i<6;i++) {
         		Zamowienie z=zamowienia.get(i);
